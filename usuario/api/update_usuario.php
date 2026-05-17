@@ -2,7 +2,7 @@
 session_start();
 header("Content-Type: application/json");
 
-require "../../config/db_config.php";
+require __DIR__ . '/../../config/db_config.php';
 
 $data = json_decode(file_get_contents("php://input"), true);
 

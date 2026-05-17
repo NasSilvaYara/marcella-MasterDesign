@@ -1,6 +1,6 @@
 <?php
 header("Content-Type: application/json");
-require "../../config/db_config.php";
+require __DIR__ . '/../../config/db_config.php';
 
 $data = json_decode(file_get_contents("php://input"), true);
 $email = $data['email'];
@@ -21,7 +21,8 @@ try {
     $stmt = $pdo->prepare("UPDATE usuarios SET reset_token = ?, reset_expira = ? WHERE email = ?");
     $stmt->execute([$token, $expira, $email]);
 
-    $link = "http://localhost/reset_senha.html?token=$token";
+    $base_url = getenv('APP_URL') ?: 'https://marcella-site.onrender.com';
+    $link = "$base_url/reset_senha.html?token=$token";
 
     echo json_encode([
         "sucesso" => true,

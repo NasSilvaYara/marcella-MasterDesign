@@ -3,7 +3,7 @@ header("Content-Type: application/json");
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-include '../../../config/db_config.php';
+include __DIR__ . '/../../../config/db_config.php';
 
 $dados = json_decode(file_get_contents('php://input'), true);
 

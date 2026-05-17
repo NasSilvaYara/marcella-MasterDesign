@@ -4,13 +4,6 @@ header('Content-Type: application/json');
 
 require_once __DIR__ . '/../../../config/db_config.php';
 
-$conn = new mysqli($host, $user, $pass, $db);
-
-if ($conn->connect_error) {
-    echo json_encode([]);
-    exit;
-}
-
 $id = $_POST["id"] ?? null;
 
 if (!$id) {
@@ -18,12 +11,15 @@ if (!$id) {
     exit;
 }
 
-$stmt = $conn->prepare("UPDATE agendamentos SET status='cancelado' WHERE id=?");
+try {
+    $stmt = $pdo->prepare("UPDATE agendamentos SET status='cancelado' WHERE id=?");
 
-$stmt->bind_param("i", $id);
+    if ($stmt->execute([$id])) {
+        echo json_encode(["sucesso" => true]);
+    } else {
+        echo json_encode(["erro" => "Erro ao cancelar"]);
+    }
 
-if ($stmt->execute()) {
-    echo json_encode(["sucesso" => true]);
-} else {
-    echo json_encode(["erro" => "Erro ao cancelar"]);
+} catch (PDOException $e) {
+    echo json_encode(["erro" => "Erro no banco: " . $e->getMessage()]);
 }

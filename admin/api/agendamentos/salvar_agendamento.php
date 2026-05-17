@@ -3,7 +3,7 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 header("Content-Type: application/json");
-require_once "../../../config/db_config.php";
+require_once __DIR__ . '/../../../config/db_config.php';
 
 $data = json_decode(file_get_contents("php://input"), true);
 

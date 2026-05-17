@@ -7,7 +7,7 @@ ini_set('display_errors', 0);
 ini_set('log_errors', 1);
 error_reporting(0);
 
-require '../../config/db_config.php';
+require __DIR__ . '/../../config/db_config.php';
 
 if (!isset($_SESSION['usuario_id'])) {
     echo json_encode(["erro" => "Usuário não logado"]);

@@ -2,7 +2,7 @@
 
 header("Content-Type: application/json");
 
-include '../../../config/db_config.php';
+include __DIR__ . '/../../../config/db_config.php';
 
 try {
 
