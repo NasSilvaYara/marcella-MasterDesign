@@ -2086,7 +2086,7 @@
 
         async function verDetalhes(id) {
             try {
-                const res = await fetch(`api/agendamentos/buscar_agendamento.php`);
+                const res = await fetch(`/admin/api/agendamentos/buscar_agendamento.php?id=${id}`);
                 const data = await res.json();
 
                 if (data.erro) return;
@@ -2349,9 +2349,9 @@
                 id: document.getElementById("edit_id").value,
                 status: document.getElementById("status_select").value,
                 data: document.getElementById("edit_data").value,
-                hora_inicio: document.getElementById("edit_inicio").value, 
-                hora_fim: document.getElementById("edit_fim").value, 
-                servicos: servicosSelecionados 
+                hora_inicio: document.getElementById("edit_inicio").value,
+                hora_fim: document.getElementById("edit_fim").value,
+                servicos: servicosSelecionados
             };
 
             try {
@@ -2368,7 +2368,7 @@
 
                 if (resultado.sucesso) {
                     alert("Agendamento atualizado!");
-                    calendar.refetchEvents(); 
+                    calendar.refetchEvents();
                     fecharModal("modalDetalhes");
                 } else {
                     alert(resultado.erro || "Erro ao atualizar.");
@@ -2383,12 +2383,15 @@
 
         async function cancelarAgendamento() {
             if (!confirm("Deseja realmente cancelar este atendimento?")) return;
+
             const fd = new FormData();
             fd.append('id', document.getElementById('edit_id').value);
-            const res = await fetch('api/agendamentos/cancelar_agendamento.php', {
+
+            const res = await fetch('/admin/api/agendamentos/cancelar_agendamento.php', {
                 method: 'POST',
                 body: fd
             });
+
             if ((await res.json()).sucesso) {
                 calendar.refetchEvents();
                 fecharModal('modalDetalhes');
@@ -2623,7 +2626,7 @@
                 const opt = document.createElement('option');
                 opt.value = ano - i;
                 opt.innerText = ano - i;
-                if (i === 0) opt.selected = true; 
+                if (i === 0) opt.selected = true;
                 sAno.appendChild(opt);
             }
 
@@ -2676,7 +2679,7 @@
                     `${Number(dados.taxa_ocupacao).toFixed(1)}%`;
 
                 renderRanking();
-                renderLinha(); 
+                renderLinha();
 
             } catch (erro) {
 
@@ -2797,9 +2800,9 @@
             chartLinha = new Chart(ctx, {
                 type: 'line',
                 data: {
-                    labels: dados.labels, 
+                    labels: dados.labels,
                     datasets: [{
-                        data: dados.valores, 
+                        data: dados.valores,
                         borderColor: '#FD987E',
                         borderWidth: 3,
                         tension: 0.4,
