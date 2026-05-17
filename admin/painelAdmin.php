@@ -1270,7 +1270,7 @@
                         data-lucide="x"></i></button>
             </div>
 
-            <form id="formularioEdicao" class="corpo-modal">
+            <form id="formularioEdicao" class="corpo-modal" onsubmit="return false;">
                 <input type="hidden" id="edit_id">
 
                 <div class="ficha-cliente">
@@ -1349,7 +1349,7 @@
                         <i data-lucide="trash-2" class="w-4 h-4"></i>
                         Cancelar
                     </button>
-                    <button type="submit" class="botao-acao botao-salvar">
+                    <button type="button" onclick="salvarAgendamento()" class="botao-acao botao-salvar"></button>
                         <i data-lucide="save" class="w-4 h-4"></i>
                         Atualizar Agenda
                     </button>
