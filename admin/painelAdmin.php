@@ -2086,7 +2086,7 @@
 
         async function verDetalhes(id) {
             try {
-                const res = await fetch(`api/agendamentos/buscar_agendamento.php?id=${id}`);
+                const res = await fetch(`api/agendamentos/buscar_agendamento.php`);
                 const data = await res.json();
 
                 if (data.erro) return;
