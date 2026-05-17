@@ -2,7 +2,7 @@
 
 session_start();
 
-include('config/db_config.php');
+include('../../config/db_config.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 

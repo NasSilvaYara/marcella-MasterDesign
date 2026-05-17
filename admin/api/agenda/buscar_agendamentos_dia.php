@@ -4,7 +4,9 @@
 
 header('Content-Type: application/json');
 
-$conn = new mysqli("localhost", "root", "", "marcella_beauty");
+require_once __DIR__ . '/../../../config/db_config.php';
+
+$conn = new mysqli($host, $user, $pass, $db);
 
 if ($conn->connect_error) {
     echo json_encode([]);

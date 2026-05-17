@@ -2564,7 +2564,7 @@ $logado = isset($_SESSION['usuario_id']);
                             style="margin-bottom: 25px; font-family: 'Playfair Display', serif; font-size: 26px; color: #000;">
                             Criar a sua conta</h3>
                         <button class="fechar-modal" onclick="fecharLogin()">✕</button>
-                        <form action="usuario/auth/login.php" method="POST">
+                        <form action="usuario/auth/registro.php" method="POST">
                             <input type="text" name="nome_completo" class="input-login" placeholder="Nome Completo"
                                 required>
                             <input type="email" name="email" class="input-login" placeholder="E-mail" required>
@@ -2676,7 +2676,7 @@ $logado = isset($_SESSION['usuario_id']);
 
                         <div class="service-card" onclick="abrirAgendador('lash')">
                             <div class="image-container">
-                                <img src="cardFotos/LashDesign.PNG" alt="Lash Designer">
+                                <img src="cardFotos/LashDesign.png" alt="Lash Designer">
                             </div>
                             <h3>Lash Designer</h3>
                             <p>Extensões de pestanas que elevam o seu olhar com naturalidade e leveza.</p>
