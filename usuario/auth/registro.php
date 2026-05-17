@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['usuario_id'] = $ultimo_id;
         $_SESSION['usuario_nome'] = $nome;
 
-        header("Location: index.php");
+        header("Location: ../../index.php");
         exit();
     } else {
         echo "Erro ao registar.";
