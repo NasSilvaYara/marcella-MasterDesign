@@ -1345,7 +1345,7 @@
                 </div>
 
                 <div class="flex gap-4 mt-6">
-                    <button type="button" onclick="cancelarAgendamento(event)" class="botao-acao botao-cancelar">
+                    <button type="button" onclick="cancelarAgendamento()" class="botao-acao botao-cancelar">
                         <i data-lucide="trash-2" class="w-4 h-4"></i>
                         Cancelar
                     </button>
@@ -2381,7 +2381,7 @@
 
         });
 
-        async function cancelarAgendamento(event) {
+        async function cancelarAgendamento() {
             event.preventDefault();
 
             const id = document.getElementById('edit_id').value;
