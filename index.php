@@ -2564,7 +2564,7 @@ $logado = isset($_SESSION['usuario_id']);
                             style="margin-bottom: 25px; font-family: 'Playfair Display', serif; font-size: 26px; color: #000;">
                             Criar a sua conta</h3>
                         <button class="fechar-modal" onclick="fecharLogin()">✕</button>
-                        <form action="registro.php" method="POST">
+                        <form action="usuario/auth/login.php" method="POST">
                             <input type="text" name="nome_completo" class="input-login" placeholder="Nome Completo"
                                 required>
                             <input type="email" name="email" class="input-login" placeholder="E-mail" required>
