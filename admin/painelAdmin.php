@@ -1350,8 +1350,8 @@
                         Cancelar
                     </button>
                     <button type="button" onclick="salvarAgendamento()" class="botao-acao botao-salvar"></button>
-                        <i data-lucide="save" class="w-4 h-4"></i>
-                        Atualizar Agenda
+                    <i data-lucide="save" class="w-4 h-4"></i>
+                    Atualizar Agenda
                     </button>
                 </div>
 
@@ -2384,10 +2384,18 @@
         async function cancelarAgendamento(event) {
             event.preventDefault();
 
+            const id = document.getElementById('edit_id').value;
+            console.log("ID capturado:", id);
+
+            if (!id) {
+                alert("Erro: ID não encontrado!");
+                return;
+            }
+
             if (!confirm("Deseja realmente cancelar este atendimento?")) return;
 
             const fd = new FormData();
-            fd.append('id', document.getElementById('edit_id').value);
+            fd.append('id', id);
 
             const res = await fetch('/admin/api/agendamentos/cancelar_agendamento.php', {
                 method: 'POST',
