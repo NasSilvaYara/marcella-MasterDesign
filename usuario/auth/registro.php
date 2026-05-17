@@ -10,20 +10,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = trim($_POST['email']);
     $senha = $_POST['senha'];
 
-    // Verifica se e-mail já existe
-    $check = $pdo->prepare("SELECT id FROM usuarios WHERE email = ?");
-    $check->execute([$email]);
+    try {
+        $check = $pdo->prepare("SELECT id FROM usuarios WHERE email = ?");
+        $check->execute([$email]);
 
-    if ($check->fetch()) {
-        echo "<script>alert('Este e-mail já está cadastrado. Tente fazer login.'); window.history.back();</script>";
-        exit();
-    }
+        if ($check->fetch()) {
+            echo "<script>alert('Este e-mail já está cadastrado. Tente fazer login.'); window.history.back();</script>";
+            exit();
+        }
 
-    $senha_encriptada = password_hash($senha, PASSWORD_DEFAULT);
+        $senha_encriptada = password_hash($senha, PASSWORD_DEFAULT);
 
-    $stmt = $pdo->prepare("INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)");
-
-    if ($stmt->execute([$nome, $email, $senha_encriptada])) {
+        $stmt = $pdo->prepare("INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)");
+        $stmt->execute([$nome, $email, $senha_encriptada]);
 
         $ultimo_id = $pdo->lastInsertId();
 
@@ -32,8 +31,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         header("Location: /../../index.php");
         exit();
-    } else {
-        echo "<script>alert('Erro ao registar. Tente novamente.'); window.history.back();</script>";
+
+    } catch (PDOException $e) {
+
+        if ($e->getCode() == 23000) {
+            echo "<script>alert('Este e-mail já está cadastrado. Tente fazer login.'); window.history.back();</script>";
+        } else {
+            echo "<script>alert('Erro ao registar. Tente novamente.'); window.history.back();</script>";
+        }
     }
 }
 ?>
