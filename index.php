@@ -2676,7 +2676,7 @@ $logado = isset($_SESSION['usuario_id']);
 
                         <div class="service-card" onclick="abrirAgendador('lash')">
                             <div class="image-container">
-                                <img src="cardFotos/LashDesign.png" alt="Lash Designer">
+                                <img src="cardFotos/LashDesign.PNG" alt="Lash Designer">
                             </div>
                             <h3>Lash Designer</h3>
                             <p>Extensões de pestanas que elevam o seu olhar com naturalidade e leveza.</p>
