@@ -2900,7 +2900,7 @@ $logado = isset($_SESSION['usuario_id']);
                     <div class="conteudo-curso">
 
                         <div class="container-icone">
-                            <svg class="estrela-icone" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <svg class="estrela-icone" viewBox="0 0 24 24" xmlns="https://w.app/fzt84u">
                                 <path
                                     d="M12 .587l3.668 7.431 8.2 1.192-5.934 5.787 1.401 8.165L12 18.897l-7.335 3.855 1.401-8.165-5.934-5.787 8.2-1.192z" />
                             </svg>
