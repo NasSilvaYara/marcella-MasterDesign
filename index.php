@@ -3599,11 +3599,14 @@ $logado = isset($_SESSION['usuario_id']);
     <div class="preco">R$ ${serv.preco}</div>
 `;
 
-                item.onclick = () => selecionarServico(item, serv);
+                const servComCategoria = {
+                    ...serv,
+                    categoria: categoriaAtual
+                };
+                item.onclick = () => selecionarServico(item, servComCategoria);
                 div.appendChild(item);
             });
         }
-
 
         /* ============================================================
            SELEÇÃO DE SERVIÇOS

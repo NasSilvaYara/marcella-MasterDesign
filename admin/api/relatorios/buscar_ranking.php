@@ -6,19 +6,19 @@ include __DIR__ . '/../../../config/db_config.php';
 
 try {
 
-    $mes = isset($_GET['mes']) ? intval($_GET['mes']) : date('m');
-    $ano = isset($_GET['ano']) ? intval($_GET['ano']) : date('Y');
+    $mes       = isset($_GET['mes']) ? intval($_GET['mes']) : date('m');
+    $ano       = isset($_GET['ano']) ? intval($_GET['ano']) : date('Y');
+    $categoria = $_GET['categoria'] ?? '';
 
-    $sql = "
+    $stmt = $pdo->prepare("
         SELECT servicos, valor_total
         FROM agendamentos
         WHERE status = 'concluido'
         AND servicos IS NOT NULL
         AND MONTH(data) = :mes
         AND YEAR(data) = :ano
-    ";
+    ");
 
-    $stmt = $pdo->prepare($sql);
     $stmt->execute([':mes' => $mes, ':ano' => $ano]);
     $agendamentos = $stmt->fetchAll();
 
@@ -31,8 +31,12 @@ try {
 
         foreach ($servicos as $servico) {
 
-            $nome  = $servico['nome']  ?? 'Sem nome';
-            $preco = floatval($servico['preco'] ?? 0);
+            $nome      = $servico['nome']      ?? 'Sem nome';
+            $preco     = floatval($servico['preco'] ?? 0);
+            $cat       = $servico['categoria'] ?? '';
+
+            // Filtra por categoria se informada
+            if ($categoria !== '' && $cat !== $categoria) continue;
 
             if (!isset($ranking[$nome])) {
                 $ranking[$nome] = ['nome' => $nome, 'valor' => 0, 'quantidade' => 0];
@@ -51,6 +55,5 @@ try {
     ]);
 
 } catch (PDOException $e) {
-
     echo json_encode(['success' => false, 'erro' => $e->getMessage()]);
 }
