@@ -1345,7 +1345,7 @@
                 </div>
 
                 <div class="flex gap-4 mt-6">
-                    <button type="button" onclick="cancelarAgendamento()" class="botao-acao botao-cancelar">
+                    <button type="button" onclick="cancelarAgendamento(event)" class="botao-acao botao-cancelar">
                         <i data-lucide="trash-2" class="w-4 h-4"></i>
                         Cancelar
                     </button>
@@ -2381,8 +2381,11 @@
 
         });
 
-        async function cancelarAgendamento() {
+        async function cancelarAgendamento(event) {
+            event.preventDefault();
+
             const id = document.getElementById('edit_id').value;
+            console.log("ID capturado:", id);
 
             if (!id) {
                 alert("Erro: ID não encontrado!");
@@ -2391,21 +2394,17 @@
 
             if (!confirm("Deseja realmente cancelar este atendimento?")) return;
 
+            const fd = new FormData();
+            fd.append('id', id);
+
             const res = await fetch('/admin/api/agendamentos/cancelar_agendamento.php', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: 'id=' + encodeURIComponent(id)
+                body: fd
             });
 
-            const json = await res.json();
-
-            if (json.sucesso) {
+            if ((await res.json()).sucesso) {
                 calendar.refetchEvents();
                 fecharModal('modalDetalhes');
-            } else {
-                alert("Erro ao cancelar: " + json.erro);
             }
         }
 
@@ -2437,12 +2436,6 @@
         function confirmarAtualizacao() {
             alert('Agendamento atualizado com sucesso!');
             return true;
-        }
-
-        function cancelarAgendamento() {
-            if (confirm('Tem certeza que deseja cancelar este agendamento?')) {
-                window.location.href = 'api/agendamentos/cancelar_agendamento.php';
-            }
         }
 
         function abrirModal(id) {
