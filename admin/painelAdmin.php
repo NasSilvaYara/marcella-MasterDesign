@@ -2382,10 +2382,7 @@
         });
 
         async function cancelarAgendamento() {
-            event.preventDefault();
-
             const id = document.getElementById('edit_id').value;
-            console.log("ID capturado:", id);
 
             if (!id) {
                 alert("Erro: ID não encontrado!");
@@ -2394,17 +2391,21 @@
 
             if (!confirm("Deseja realmente cancelar este atendimento?")) return;
 
-            const fd = new FormData();
-            fd.append('id', id);
-
             const res = await fetch('/admin/api/agendamentos/cancelar_agendamento.php', {
                 method: 'POST',
-                body: fd
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: 'id=' + encodeURIComponent(id)
             });
 
-            if ((await res.json()).sucesso) {
+            const json = await res.json();
+
+            if (json.sucesso) {
                 calendar.refetchEvents();
                 fecharModal('modalDetalhes');
+            } else {
+                alert("Erro ao cancelar: " + json.erro);
             }
         }
 
