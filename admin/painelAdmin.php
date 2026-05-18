@@ -286,6 +286,10 @@
             transition: all 0.3s ease;
             margin-top: 16px;
             box-shadow: 0 8px 24px rgba(224, 122, 107, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
         }
 
         .botao-acao:hover {
