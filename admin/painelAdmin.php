@@ -1349,7 +1349,7 @@
                         <i data-lucide="trash-2" class="w-4 h-4"></i>
                         Cancelar
                     </button>
-                    <button type="button" onclick="salvarAgendamento()" class="botao-acao botao-salvar"></button>
+                    <button type="button" onclick="salvarAgendamento()" class="botao-acao botao-salvar">
                         <i data-lucide="save" class="w-4 h-4"></i>
                         Atualizar Agenda
                     </button>
@@ -2685,6 +2685,7 @@
             btn.classList.add('active');
             renderRanking();
         }
+
         async function atualizarDashboard() {
 
             try {
