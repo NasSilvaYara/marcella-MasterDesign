@@ -22,9 +22,7 @@
 | INTEGRANTES | FUNÇÃO | REDES SOCIAIS |
 | :---: | :---: | :---: |
 | **Yara da Silva** | Gerente de Projeto, responsável pelo protótipo e UI/UX Layout, modelagem e estruturação do Banco de Dados e elaboração de diagramas UML| [GitHub](https://github.com/NasSilvaYara) / [LinkedIn](https://www.linkedin.com/in/nassilvayara) |
-| **Gabriel Alves** | Responsável pela comunicação com a parceria (stakeholders) e suporte na elaboração da documentação do projeto | [GitHub](#) / [LinkedIn](https://www.linkedin.com/in/gabriel-alves-798160382/) |
 | **Livia Schendroski** | Desenvolvedora Front-end e Back-end, com participação na elaboração da documentação | [GitHub](#) / [LinkedIn](https://www.linkedin.com/in/livia-de-queiroz-schendroski-606b3926b/) |
-| **Paulo Henrique** | Desenvolvedor Front-end e Back-end, com participação na elaboração da documentação | [GitHub](#) / [LinkedIn](#) |
 </div>
 
 <br>
