@@ -1349,9 +1349,9 @@
                         <i data-lucide="trash-2" class="w-4 h-4"></i>
                         Cancelar
                     </button>
-                    <button type="button" onclick="salvarAgendamento()" class="botao-acao botao-salvar"></button>
-                    <i data-lucide="save" class="w-4 h-4"></i>
-                    Atualizar Agenda
+                    <button type="button" onclick="salvarAgendamento()" class="botao-acao botao-salvar">
+                        <i data-lucide="save" class="w-4 h-4"></i>
+                        Atualizar Agenda
                     </button>
                 </div>
 
@@ -2405,6 +2405,39 @@
             if ((await res.json()).sucesso) {
                 calendar.refetchEvents();
                 fecharModal('modalDetalhes');
+            }
+        }
+
+        async function salvarAgendamento() {
+            const id = document.getElementById('edit_id').value;
+            const data = document.getElementById('edit_data').value;
+            const hora_inicio = document.getElementById('edit_inicio').value;
+            const hora_fim = document.getElementById('edit_fim').value;
+            const status = document.getElementById('status_select').value;
+
+            const res = await fetch('/admin/api/agendamentos/atualizar_agendamento.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    id,
+                    data,
+                    hora_inicio,
+                    hora_fim,
+                    status,
+                    servicos: servicosSelecionados
+                })
+            });
+
+            const json = await res.json();
+
+            if (json.sucesso) {
+                alert("Agendamento atualizado com sucesso!");
+                calendar.refetchEvents();
+                fecharModal('modalDetalhes');
+            } else {
+                alert("Erro ao atualizar: " + json.erro);
             }
         }
 
