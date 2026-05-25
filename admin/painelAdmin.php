@@ -2718,11 +2718,11 @@
 
                 const url = `/admin/api/relatorios/buscar_ranking.php?mes=${mes}&ano=${ano}`;
                 const resposta = await fetch(url);
-                const dados = await resposta.json();
+                const resultado = await resposta.json();
 
-                if (!dados.success) return;
+                if (!resultado.success) return;
 
-                todosServicos = dados.ranking;
+                todosServicos = resultado.ranking;
                 desenharRanking(todosServicos);
 
             } catch (erro) {
@@ -2812,7 +2812,6 @@
         }
 
         async function renderLinha() {
-
             const canvas = document.getElementById('canvasLinha');
             if (!canvas) return;
 
@@ -2820,9 +2819,9 @@
             const ano = document.getElementById('filtroAno').value;
 
             const resposta = await fetch(`/admin/api/relatorios/buscar_fluxo_semanal.php?mes=${mes}&ano=${ano}`);
-            const dados = await resposta.json();
+            const resultado = await resposta.json();
 
-            if (!dados.success) return;
+            if (!resultado.success) return;
 
             const ctx = canvas.getContext('2d');
 
@@ -2835,9 +2834,9 @@
             chartLinha = new Chart(ctx, {
                 type: 'line',
                 data: {
-                    labels: dados.labels,
+                    labels: resultado.labels,
                     datasets: [{
-                        data: dados.valores,
+                        data: resultado.valores,
                         borderColor: '#FD987E',
                         borderWidth: 3,
                         tension: 0.4,
