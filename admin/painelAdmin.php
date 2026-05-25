@@ -2683,139 +2683,132 @@
             atualizarDashboard();
         }
 
+        function construirMapaCategoria() {
+            const mapa = {};
+            Object.entries(DADOS_AGENDA).forEach(([catKey, catDados]) => {
+                if (catDados.servicos) {
+                    catDados.servicos.forEach(s => {
+                        mapa[s.nome] = catKey;
+                    });
+                }
+                if (catDados.subs) {
+                    Object.values(catDados.subs).forEach(sub => {
+                        sub.servicos.forEach(s => {
+                            mapa[s.nome] = catKey;
+                        });
+                    });
+                }
+            });
+            return mapa;
+        }
+
+        let todosServicos = [];
+
         function mudarCategoria(key, btn) {
             categoriaAtual = key;
             document.querySelectorAll('.ds-btn-cat').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-            renderRanking();
-        }
-
-        async function atualizarDashboard() {
-
-            try {
-
-                const mes = document.getElementById("filtroMes").value;
-                const ano = document.getElementById("filtroAno").value;
-
-                const resposta = await fetch(
-                    `api/relatorios/buscar_metricas.php?mes=${mes}&ano=${ano}`
-                );
-
-                const dados = await resposta.json();
-
-                if (!dados.success) return;
-
-                document.getElementById("valor-metricas").innerText =
-                    Number(dados.faturamento_bruto).toLocaleString("pt-BR", {
-                        style: "currency",
-                        currency: "BRL"
-                    });
-
-                document.getElementById("valorTicket").innerText =
-                    Number(dados.ticket_medio).toLocaleString("pt-BR", {
-                        style: "currency",
-                        currency: "BRL"
-                    });
-
-                document.getElementById("valorOcupacao").innerText =
-                    `${Number(dados.taxa_ocupacao).toFixed(1)}%`;
-
-                renderRanking();
-                renderLinha();
-
-            } catch (erro) {
-
-                console.error("Erro dashboard:", erro);
-
-            }
-
+            desenharRanking(todosServicos);
         }
 
         async function renderRanking() {
-
             try {
-
                 const mes = document.getElementById('filtroMes').value;
                 const ano = document.getElementById('filtroAno').value;
 
-                const url = `/admin/api/relatorios/buscar_ranking.php?mes=${mes}&ano=${ano}&categoria=${categoriaAtual}`;
-
+                const url = `/admin/api/relatorios/buscar_ranking.php?mes=${mes}&ano=${ano}`;
                 const resposta = await fetch(url);
                 const dados = await resposta.json();
 
                 if (!dados.success) return;
 
-                const canvas = document.getElementById('canvasRanking');
-                if (!canvas) return;
-
-                const ctx = canvas.getContext('2d');
-
-                if (chartRanking) chartRanking.destroy();
-
-                const labels = dados.ranking.map(item => item.nome);
-                const valores = dados.ranking.map(item => item.valor);
-
-                document.getElementById('descRanking').innerHTML = `
-            <strong>Análise Estratégica:</strong>
-            O gráfico apresenta os serviços com maior faturamento no período selecionado.
-            Utilize essas informações para identificar os serviços mais rentáveis do salão.
-        `;
-
-                const grad = ctx.createLinearGradient(0, 0, 400, 0);
-                grad.addColorStop(0, '#FD987E');
-                grad.addColorStop(1, '#FAA7D5');
-
-                chartRanking = new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: labels,
-                        datasets: [{
-                            data: valores,
-                            backgroundColor: grad,
-                            borderRadius: 6,
-                            barThickness: 16
-                        }]
-                    },
-                    options: {
-                        indexAxis: 'y',
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: {
-                                display: false
-                            }
-                        },
-                        scales: {
-                            x: {
-                                grid: {
-                                    color: 'rgba(255,255,255,0.05)'
-                                },
-                                ticks: {
-                                    color: '#64748B',
-                                    font: {
-                                        size: 10
-                                    },
-                                    callback: value => 'R$ ' + value.toLocaleString('pt-BR')
-                                }
-                            },
-                            y: {
-                                grid: {
-                                    display: false
-                                },
-                                ticks: {
-                                    color: '#F1F5F9',
-                                    font: {
-                                        size: 11
-                                    }
-                                }
-                            }
-                        }
-                    }
-                });
+                todosServicos = dados.ranking;
+                desenharRanking(todosServicos);
 
             } catch (erro) {
                 console.error("Erro ranking:", erro);
             }
+        }
+
+        function desenharRanking(rankingCompleto) {
+            const canvas = document.getElementById('canvasRanking');
+            if (!canvas) return;
+
+            const mapa = construirMapaCategoria();
+
+            const rankingFiltrado = rankingCompleto.filter(item => mapa[item.nome] === categoriaAtual);
+
+            const labels = rankingFiltrado.map(item => item.nome);
+            const valores = rankingFiltrado.map(item => item.valor);
+
+            const ctx = canvas.getContext('2d');
+            if (chartRanking) chartRanking.destroy();
+
+            if (labels.length === 0) {
+                document.getElementById('descRanking').innerHTML = `
+            <strong>Análise Estratégica:</strong>
+            Nenhum serviço de <em>${DADOS_AGENDA[categoriaAtual]?.nome}</em> foi concluído neste período.
+        `;
+                return;
+            }
+
+            document.getElementById('descRanking').innerHTML = `
+        <strong>Análise Estratégica:</strong>
+        O gráfico apresenta os serviços com maior faturamento no período selecionado.
+        Utilize essas informações para identificar os serviços mais rentáveis do salão.
+    `;
+
+            const grad = ctx.createLinearGradient(0, 0, canvas.width || 400, 0);
+            grad.addColorStop(0, '#FD987E');
+            grad.addColorStop(1, '#FAA7D5');
+
+            chartRanking = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: valores,
+                        backgroundColor: grad,
+                        borderRadius: 6,
+                        barThickness: 16
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: {
+                                color: 'rgba(255,255,255,0.05)'
+                            },
+                            ticks: {
+                                color: '#64748B',
+                                font: {
+                                    size: 10
+                                },
+                                callback: value => 'R$ ' + value.toLocaleString('pt-BR')
+                            }
+                        },
+                        y: {
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                color: '#F1F5F9',
+                                font: {
+                                    size: 11
+                                }
+                            }
+                        }
+                    }
+                }
+            });
         }
 
         async function renderLinha() {
