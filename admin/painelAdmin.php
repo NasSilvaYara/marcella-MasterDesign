@@ -2554,7 +2554,7 @@
                         preco: 50
                     },
                     {
-                        nome: "Alongamento de unhas",
+                        nome: "Alongamento",
                         preco: 120
                     },
                     {
@@ -2562,7 +2562,7 @@
                         preco: 70
                     },
                     {
-                        nome: "Esmaltação permanente",
+                        nome: "Esmaltação",
                         preco: 50
                     },
                     {
@@ -2574,117 +2574,85 @@
             massoterapia: {
                 nome: "Massoterapia",
                 servicos: [{
-                        nome: "Massagem relaxante",
+                        nome: "Relaxante",
                         preco: 130
                     },
                     {
-                        nome: "Massagem terapêutica",
+                        nome: "Terapêutica",
                         preco: 130
                     },
                     {
-                        nome: "Drenagem e modeladora",
+                        nome: "Modeladora",
                         preco: 150
                     },
                     {
-                        nome: "Bandagem terapêutica (Taping)",
+                        nome: "Taping",
                         preco: 80
                     },
                     {
-                        nome: "Drenagem pós parto e operatório",
+                        nome: "Pós Parto",
                         preco: 160
                     }
                 ]
             },
             depilacao: {
                 nome: "Depilação",
+                isNested: true,
                 subs: {
                     facial: {
                         nome: "Facial",
                         servicos: [{
-                                nome: "Depilação de Buço",
-                                preco: 25
-                            },
-                            {
-                                nome: "Depilação de Sobrancelha (Cera)",
-                                preco: 35
-                            },
-                            {
-                                nome: "Depilação de Rosto Completo",
-                                preco: 60
-                            }
-                        ]
+                            nome: "Buço",
+                            preco: 25
+                        }, {
+                            nome: "Sobrancelha",
+                            preco: 35
+                        }]
                     },
                     corporal: {
                         nome: "Corporal",
                         servicos: [{
-                                nome: "Depilação de Axilas",
-                                preco: 30
-                            },
-                            {
-                                nome: "Depilação de Meia Perna",
-                                preco: 45
-                            },
-                            {
-                                nome: "Depilação de Perna Inteira",
-                                preco: 80
-                            },
-                            {
-                                nome: "Depilação de Braços",
-                                preco: 40
-                            }
-                        ]
+                            nome: "Axila",
+                            preco: 30
+                        }, {
+                            nome: "Meia Perna",
+                            preco: 45
+                        }]
                     },
                     intima: {
                         nome: "Íntima",
                         servicos: [{
-                                nome: "Depilação de Virilha Simples",
-                                preco: 50
-                            },
-                            {
-                                nome: "Depilação de Virilha Completa",
-                                preco: 90
-                            },
-                            {
-                                nome: "Depilação de Ânus",
-                                preco: 30
-                            }
-                        ]
+                            nome: "Virilha",
+                            preco: 90
+                        }, {
+                            nome: "Ânus",
+                            preco: 30
+                        }]
                     }
                 }
             },
             lash: {
                 nome: "Lash",
                 servicos: [{
-                        nome: "Extensão de cílios",
-                        preco: 200
-                    },
-                    {
-                        nome: "Designer de sobrancelhas",
-                        preco: 60
-                    }
-                ]
+                    nome: "Cílios",
+                    preco: 200
+                }, {
+                    nome: "Designer",
+                    preco: 60
+                }]
             },
             estetica: {
                 nome: "Estética",
                 servicos: [{
-                        nome: "Preenchimento Labial",
-                        preco: 1500
-                    },
-                    {
-                        nome: "Botox",
-                        preco: 1000
-                    },
-                    {
-                        nome: "Aplicação em vasinhos",
-                        preco: 250
-                    },
-                    {
-                        nome: "Aplicação de enzimas",
-                        preco: 300
-                    }
-                ]
+                    nome: "Preenchimento",
+                    preco: 1500
+                }, {
+                    nome: "Botox",
+                    preco: 1000
+                }]
             }
         };
+
         let chartRanking = null;
         let chartLinha = null;
         let categoriaAtual = 'manicure';
@@ -2717,7 +2685,7 @@
 
         function construirMapaCategoria() {
             const mapa = {};
-            Object.entries(DADOS_AGENDA).forEach(([catKey, catDados]) => {
+            Object.entries(dados).forEach(([catKey, catDados]) => {
                 if (catDados.servicos) {
                     catDados.servicos.forEach(s => {
                         mapa[s.nome] = catKey;
