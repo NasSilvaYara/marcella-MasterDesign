@@ -2554,7 +2554,7 @@
                         preco: 50
                     },
                     {
-                        nome: "Alongamento",
+                        nome: "Alongamento de unhas",
                         preco: 120
                     },
                     {
@@ -2562,7 +2562,7 @@
                         preco: 70
                     },
                     {
-                        nome: "Esmaltação",
+                        nome: "Esmaltação permanente",
                         preco: 50
                     },
                     {
@@ -2574,85 +2574,117 @@
             massoterapia: {
                 nome: "Massoterapia",
                 servicos: [{
-                        nome: "Relaxante",
+                        nome: "Massagem relaxante",
                         preco: 130
                     },
                     {
-                        nome: "Terapêutica",
+                        nome: "Massagem terapêutica",
                         preco: 130
                     },
                     {
-                        nome: "Modeladora",
+                        nome: "Drenagem e modeladora",
                         preco: 150
                     },
                     {
-                        nome: "Taping",
+                        nome: "Bandagem terapêutica (Taping)",
                         preco: 80
                     },
                     {
-                        nome: "Pós Parto",
+                        nome: "Drenagem pós parto e operatório",
                         preco: 160
                     }
                 ]
             },
             depilacao: {
                 nome: "Depilação",
-                isNested: true,
                 subs: {
                     facial: {
                         nome: "Facial",
                         servicos: [{
-                            nome: "Buço",
-                            preco: 25
-                        }, {
-                            nome: "Sobrancelha",
-                            preco: 35
-                        }]
+                                nome: "Depilação de Buço",
+                                preco: 25
+                            },
+                            {
+                                nome: "Depilação de Sobrancelha (Cera)",
+                                preco: 35
+                            },
+                            {
+                                nome: "Depilação de Rosto Completo",
+                                preco: 60
+                            }
+                        ]
                     },
                     corporal: {
                         nome: "Corporal",
                         servicos: [{
-                            nome: "Axila",
-                            preco: 30
-                        }, {
-                            nome: "Meia Perna",
-                            preco: 45
-                        }]
+                                nome: "Depilação de Axilas",
+                                preco: 30
+                            },
+                            {
+                                nome: "Depilação de Meia Perna",
+                                preco: 45
+                            },
+                            {
+                                nome: "Depilação de Perna Inteira",
+                                preco: 80
+                            },
+                            {
+                                nome: "Depilação de Braços",
+                                preco: 40
+                            }
+                        ]
                     },
                     intima: {
                         nome: "Íntima",
                         servicos: [{
-                            nome: "Virilha",
-                            preco: 90
-                        }, {
-                            nome: "Ânus",
-                            preco: 30
-                        }]
+                                nome: "Depilação de Virilha Simples",
+                                preco: 50
+                            },
+                            {
+                                nome: "Depilação de Virilha Completa",
+                                preco: 90
+                            },
+                            {
+                                nome: "Depilação de Ânus",
+                                preco: 30
+                            }
+                        ]
                     }
                 }
             },
             lash: {
                 nome: "Lash",
                 servicos: [{
-                    nome: "Cílios",
-                    preco: 200
-                }, {
-                    nome: "Designer",
-                    preco: 60
-                }]
+                        nome: "Extensão de cílios",
+                        preco: 200
+                    },
+                    {
+                        nome: "Designer de sobrancelhas",
+                        preco: 60
+                    }
+                ]
             },
             estetica: {
                 nome: "Estética",
                 servicos: [{
-                    nome: "Preenchimento",
-                    preco: 1500
-                }, {
-                    nome: "Botox",
-                    preco: 1000
-                }]
+                        nome: "Preenchimento Labial",
+                        preco: 1500
+                    },
+                    {
+                        nome: "Botox",
+                        preco: 1000
+                    },
+                    {
+                        nome: "Aplicação em vasinhos",
+                        preco: 250
+                    },
+                    {
+                        nome: "Aplicação de enzimas",
+                        preco: 300
+                    }
+                ]
             }
         };
-
         let chartRanking = null;
         let chartLinha = null;
         let categoriaAtual = 'manicure';
