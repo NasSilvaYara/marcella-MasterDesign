@@ -1,22 +1,16 @@
 <?php
 
 header("Content-Type: application/json");
-session_start(); 
+session_start();
 
 include __DIR__ . '/../../../config/db_config.php';
 
 try {
 
     $usuario_id = $_SESSION['usuario_id'] ?? null;
-
-    if (!$usuario_id) {
-        echo json_encode(['success' => false, 'erro' => 'Não autenticado']);
-        exit;
-    }
-
-    $mes       = isset($_GET['mes']) ? intval($_GET['mes']) : date('m');
-    $ano       = isset($_GET['ano']) ? intval($_GET['ano']) : date('Y');
-    $categoria = $_GET['categoria'] ?? '';
+    $mes        = isset($_GET['mes']) ? intval($_GET['mes']) : date('m');
+    $ano        = isset($_GET['ano']) ? intval($_GET['ano']) : date('Y');
+    $categoria  = $_GET['categoria'] ?? '';
 
     $stmt = $pdo->prepare("
         SELECT servicos, valor_total
@@ -45,11 +39,8 @@ try {
 
         foreach ($servicos as $servico) {
 
-            $nome  = $servico['nome']      ?? 'Sem nome';
+            $nome  = $servico['nome']  ?? 'Sem nome';
             $preco = floatval($servico['preco'] ?? 0);
-            $cat   = $servico['categoria'] ?? '';
-
-            if ($categoria !== '' && $cat !== $categoria) continue;
 
             if (!isset($ranking[$nome])) {
                 $ranking[$nome] = ['nome' => $nome, 'valor' => 0, 'quantidade' => 0];
