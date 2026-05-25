@@ -7,25 +7,21 @@ include __DIR__ . '/../../../config/db_config.php';
 
 try {
 
-    $usuario_id = $_SESSION['usuario_id'] ?? null;
-    $mes        = isset($_GET['mes']) ? intval($_GET['mes']) : date('m');
-    $ano        = isset($_GET['ano']) ? intval($_GET['ano']) : date('Y');
-    $categoria  = $_GET['categoria'] ?? '';
+    $mes       = isset($_GET['mes']) ? intval($_GET['mes']) : date('m');
+    $ano       = isset($_GET['ano']) ? intval($_GET['ano']) : date('Y');
 
     $stmt = $pdo->prepare("
         SELECT servicos, valor_total
         FROM agendamentos
         WHERE status = 'concluido'
         AND servicos IS NOT NULL
-        AND usuario_id = :usuario_id
         AND MONTH(data) = :mes
         AND YEAR(data) = :ano
     ");
 
     $stmt->execute([
-        ':mes'        => $mes,
-        ':ano'        => $ano,
-        ':usuario_id' => $usuario_id
+        ':mes' => $mes,
+        ':ano' => $ano
     ]);
 
     $agendamentos = $stmt->fetchAll();
