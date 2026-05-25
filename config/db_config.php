@@ -1,9 +1,9 @@
 <?php
 
-$host = "sql10.freesqldatabase.com";
-$db   = "sql10828153";
-$user = "sql10828153";
-$pass = "rfzuwdQD6A";
+$host    = "sql10.freesqldatabase.com";
+$db      = "sql10828153";
+$user    = "sql10828153";
+$pass    = "rfzuwdQD6A";
 $charset = "utf8mb4";
 
 try {
@@ -19,8 +19,12 @@ try {
 
 } catch (PDOException $e) {
 
-    die("Erro na conexão com o banco: " . $e->getMessage());
-
+    header("Content-Type: application/json");
+    echo json_encode([
+        'success' => false,
+        'erro'    => 'Falha na conexão: ' . $e->getMessage()
+    ]);
+    exit;
 }
 
 $admin_email = "golcalvesmarcella@gmail.com";
