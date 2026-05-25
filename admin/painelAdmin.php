@@ -2738,7 +2738,7 @@
                 const mes = document.getElementById('filtroMes').value;
                 const ano = document.getElementById('filtroAno').value;
 
-                const url = `api/relatorios/buscar_ranking.php?mes=${mes}&ano=${ano}&categoria=${categoriaAtual}`;
+                const url = `/admin/api/relatorios/buscar_ranking.php?mes=${mes}&ano=${ano}&categoria=${categoriaAtual}`;
 
                 const resposta = await fetch(url);
                 const dados = await resposta.json();
@@ -2826,7 +2826,7 @@
             const mes = document.getElementById('filtroMes').value;
             const ano = document.getElementById('filtroAno').value;
 
-            const resposta = await fetch(`api/relatorios/buscar_fluxo_semanal.php?mes=${mes}&ano=${ano}`);
+            const resposta = await fetch(`/admin/api/relatorios/buscar_fluxo_semanal.php?mes=${mes}&ano=${ano}`);
             const dados = await resposta.json();
 
             if (!dados.success) return;
