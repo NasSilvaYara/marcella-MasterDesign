@@ -3,7 +3,7 @@
 </div>
 
 <p align="justify">
-  Este projeto consiste na estruturação completa e criação do site institucional para a empresa <strong>Marcella Gonçalves Nails</strong>, localizada em Suzano. O sistema foi desenvolvido para consolidar a marca no mercado local, oferecendo uma plataforma profissional para divulgação de serviços e facilitação de agendamentos.
+  Este projeto consiste no desenvolvimento de um sistema web institucional para a empresa <strong>Marcella Gonçalves Nails</strong>, localizada em Suzano. A aplicação foi desenvolvida com o objetivo de fortalecer a presença digital da empresa, apresentar seus serviços e disponibilizar recursos para gerenciamento de clientes, agendamentos e informações administrativas.
 </p>
 
 <br>
@@ -11,8 +11,28 @@
 ## Descrição do Projeto
 
 <p align="justify">
-  O desenvolvimento visa resolver a limitação de visibilidade digital da empresa, criando uma presença online profissional através de um site institucional. O sistema conta com áreas de apresentação, serviços e um sistema de autenticação de usuários para garantir a integridade dos dados.
+  O sistema foi desenvolvido como uma solução web para centralizar as informações e funcionalidades relacionadas ao atendimento da empresa. A aplicação possui áreas destinadas aos clientes e à administração, permitindo o gerenciamento de agendamentos, consultas de informações e organização dos dados do sistema.
 </p>
+
+<br>
+
+## Estrutura do Sistema
+
+<div align="center">
+
+| ÁREA | DESCRIÇÃO |
+| :---: | :--- |
+| **Área Administrativa** | Gerenciamento das funcionalidades administrativas do sistema |
+| **Agenda** | Organização e gerenciamento da agenda de atendimentos |
+| **Agendamentos** | Controle dos agendamentos realizados pelos clientes |
+| **Relatórios** | Consulta e organização de informações administrativas |
+| **Área do Cliente** | Acesso às funcionalidades destinadas aos usuários |
+| **Autenticação** | Controle de acesso e autenticação de usuários |
+| **Galeria** | Organização e apresentação das imagens do estabelecimento |
+| **Card Fotos** | Gerenciamento dos conteúdos visuais |
+| **Banco de Dados** | Persistência e gerenciamento das informações da aplicação |
+
+</div>
 
 <br>
 
@@ -22,8 +42,8 @@
 
 | INTEGRANTES | FUNÇÃO | REDES SOCIAIS |
 | :---: | :---: | :---: |
-| **Yara da Silva** | Gerente de Projeto, responsável pelo protótipo e UI/UX, layout, modelagem e estruturação do Banco de Dados e elaboração de diagramas UML | [GitHub](https://github.com/NasSilvaYara) / [LinkedIn](https://www.linkedin.com/in/nassilvayara) |
-| **Livia Schendroski** | Desenvolvedora Front-end e Back-end, com participação na elaboração da documentação | [GitHub](#) / [LinkedIn](https://www.linkedin.com/in/livia-de-queiroz-schendroski-606b3926b/) |
+| **Yara da Silva** | Gerente de Projeto, responsável pelo protótipo, UI/UX, layout, modelagem e estruturação do Banco de Dados e elaboração de diagramas UML | [GitHub](https://github.com/NasSilvaYara) / [LinkedIn](https://www.linkedin.com/in/nassilvayara) |
+| **Livia Schendroski** | Desenvolvedora Front-end e Back-end, com participação na elaboração da documentação | [GitHub](https://www.linkedin.com/in/schendroski) / [LinkedIn](https://www.linkedin.com/in/livia-de-queiroz-schendroski-606b3926b/) |
 
 </div>
 
@@ -34,170 +54,204 @@
 <div align="center">
 
 <p align="justify">
-  A infraestrutura tecnológica do sistema é composta pelas seguintes ferramentas:
+  A aplicação utiliza tecnologias voltadas ao desenvolvimento web, gerenciamento de dados, autenticação e execução do ambiente da aplicação.
 </p>
 
 ![Figma](https://img.shields.io/badge/Figma-%238A2BE2.svg?style=for-the-badge&logo=figma&logoColor=white)&nbsp;
-![XAMPP](https://img.shields.io/badge/XAMPP-%23FB7A24.svg?style=for-the-badge&logo=xampp&logoColor=white)&nbsp;
-![MySQL](https://img.shields.io/badge/MySQL-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white)&nbsp;
 ![PHP](https://img.shields.io/badge/PHP-%23777BB4.svg?style=for-the-badge&logo=php&logoColor=white)&nbsp;
+![MySQL](https://img.shields.io/badge/MySQL-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white)&nbsp;
 ![HTML5](https://img.shields.io/badge/HTML5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)&nbsp;
 ![CSS3](https://img.shields.io/badge/CSS3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)&nbsp;
-![JavaScript](https://img.shields.io/badge/JavaScript-%23F7DF1E.svg?style=for-the-badge&logo=javascript&logoColor=black)
+![JavaScript](https://img.shields.io/badge/JavaScript-%23F7DF1E.svg?style=for-the-badge&logo=javascript&logoColor=black)&nbsp;
+![Docker](https://img.shields.io/badge/Docker-%232496ED.svg?style=for-the-badge&logo=docker&logoColor=white)&nbsp;
+![Git](https://img.shields.io/badge/Git-%23F05032.svg?style=for-the-badge&logo=git&logoColor=white)
 
 </div>
 
 <br>
 
-## Funcionalidades do Sistema
+## Funcionalidades
 
 <div align="center">
 
 | FUNCIONALIDADE | DESCRIÇÃO |
 | :---: | :--- |
-| **Página Institucional** | Apresentação da empresa e identidade visual |
-| **Serviços** | Divulgação dos serviços oferecidos |
-| **Agendamento** | Facilitação do processo de agendamento |
-| **Autenticação** | Sistema de login e controle de usuários |
-| **Banco de Dados** | Armazenamento e gerenciamento das informações |
-| **Interface Responsiva** | Adaptação para diferentes dispositivos |
+| **Página Institucional** | Apresentação da empresa e de seus serviços |
+| **Autenticação de Usuários** | Controle de acesso às áreas do sistema |
+| **Área do Cliente** | Acesso às funcionalidades destinadas aos clientes |
+| **Área Administrativa** | Gerenciamento das informações e funcionalidades administrativas |
+| **Agenda** | Organização dos horários e atendimentos |
+| **Agendamentos** | Gerenciamento dos agendamentos realizados |
+| **Relatórios** | Consulta e acompanhamento das informações do sistema |
+| **Galeria** | Apresentação de imagens e conteúdos visuais |
+| **Banco de Dados** | Armazenamento das informações da aplicação |
 
 </div>
 
 <br>
 
-## Especificações Técnicas e Cronograma
+## Estrutura de Diretórios
 
-<div align="center">
-
-<p align="justify">
-  Em conformidade com o planejamento estratégico detalhado no Termo de Abertura do Projeto (Revisão 01), as definições técnicas e prazos seguem os parâmetros abaixo:
-</p>
-
-| PARÂMETRO TÉCNICO | DETALHAMENTO DO PROJETO |
-| :---: | :--- |
-| **Tecnologia Back-end** | PHP 8.x para processamento de dados e gestão de sessões |
-| **Banco de Dados** | MySQL para armazenamento seguro das informações |
-| **Protocolo de Segurança** | Implementação de Hash BCRYPT para proteção de senhas |
-| **Ambiente de Desenvolvimento** | XAMPP |
-| **Prototipação** | Figma |
-| **Início do Projeto** | 23 de fevereiro de 2026 |
-| **Previsão de Término** | 25 de junho de 2026 |
-
-</div>
-
-<br>
-
-## Guia de Instalação e Execução
-
-<p align="justify">
-  Para a correta replicação do ambiente de desenvolvimento e execução do sistema institucional, siga os procedimentos técnicos detalhados abaixo.
-</p>
-
-<br>
-
-### 1. Clonagem do Repositório
-
-Direcione o terminal para o diretório <code>htdocs</code> do seu servidor local XAMPP e execute:
-
-<pre><code>git clone https://github.com/NasSilvaYara/marcella_MasterDesign.git</code></pre>
-
-<br>
-
-### 2. Configuração do Ambiente
-
-Após realizar a clonagem, acesse a pasta do projeto:
-
-<pre><code>cd marcella_MasterDesign</code></pre>
-
-Certifique-se de que os módulos <strong>Apache</strong> e <strong>MySQL</strong> estejam ativos no XAMPP.
-
-<br>
-
-### 3. Configuração do Banco de Dados
-
-Acesse o <strong>phpMyAdmin</strong> através do endereço:
-
-<pre><code>http://localhost/phpmyadmin</code></pre>
-
-Crie um banco de dados chamado:
-
-<pre><code>marcella_beauty</code></pre>
-
-<br>
-
-### 4. Configuração da Conexão
-
-Localize o arquivo responsável pela conexão com o banco de dados e configure as credenciais do ambiente local:
-
-<pre><code>// db_config.php
-
-$host = "localhost";
-$user = "root";
-$pass = "";
-$db   = "marcella_beauty";</code></pre>
-
-<br>
-
-### 5. Importação do Banco de Dados
-
-No <strong>phpMyAdmin</strong>, selecione o banco de dados <code>marcella_beauty</code> e importe o arquivo:
-
-<pre><code>/database/marcella_beauty.sql</code></pre>
-
-<br>
-
-### 6. Inicialização do Sistema
-
-Com os módulos <strong>Apache</strong> e <strong>MySQL</strong> ativos, acesse:
-
-<pre><code>http://localhost/marcella_beauty</code></pre>
-
-<br>
-
-## Estrutura do Projeto
-
-<pre><code>marcella_MasterDesign/
+<pre><code>marcella-MasterDesign-main/
 │
-├── database/
-│   └── marcella_beauty.sql
+├── admin/
+│   ├── api/
+│   │   ├── agenda/
+│   │   ├── agendamentos/
+│   │   └── relatorios/
+│   └── painelAdmin.php
 │
-├── css/
-│   └── ...
+├── cardFotos/
 │
-├── js/
-│   └── ...
+├── config/
+│   └── db_config.php
 │
-├── img/
-│   └── ...
+├── galeria/
 │
-├── pages/
-│   └── ...
+├── usuario/
+│   ├── api/
+│   ├── auth/
+│   └── painelClient.php
 │
-├── db_config.php
+├── Dockerfile
 ├── index.php
+├── LICENSE
+├── logo.png
+├── marcella.mp4
 └── README.md</code></pre>
+
+<br>
+
+## Banco de Dados
+
+<p align="justify">
+  O sistema utiliza um banco de dados MySQL remoto para armazenamento das informações da aplicação. A conexão é realizada através do arquivo de configuração localizado em <code>config/db_config.php</code>.
+</p>
+
+<p align="justify">
+  Por questões de segurança, as credenciais de acesso ao banco de dados não são disponibilizadas neste documento.
+</p>
+
+<br>
+
+## Configuração do Ambiente
+
+<p align="justify">
+  Para executar o projeto, é necessário configurar as credenciais do banco de dados no ambiente de execução da aplicação. O arquivo responsável pela conexão encontra-se em:
+</p>
+
+<pre><code>config/db_config.php</code></pre>
+
+<p align="justify">
+  As informações de conexão devem ser configuradas de acordo com o ambiente utilizado para hospedagem da aplicação.
+</p>
+
+<br>
+
+## Configuração do Banco de Dados
+
+<p align="justify">
+  A aplicação utiliza conexão PDO para comunicação com o banco de dados MySQL. O arquivo de configuração estabelece a conexão utilizando as credenciais definidas no ambiente.
+</p>
+
+<pre><code>&lt;?php
+
+$host    = "SEU_HOST";
+$db      = "SEU_BANCO";
+$user    = "SEU_USUARIO";
+$pass    = "SUA_SENHA";
+$charset = "utf8mb4";
+
+$pdo = new PDO(
+    "mysql:host=$host;dbname=$db;charset=$charset",
+    $user,
+    $pass
+);</code></pre>
+
+<p align="justify">
+  <strong>Importante:</strong> não publique credenciais reais de banco de dados no GitHub. Utilize variáveis de ambiente ou outro mecanismo seguro de configuração.
+</p>
+
+<br>
+
+## Área Administrativa
+
+<p align="justify">
+  A área administrativa está localizada no diretório <code>admin/</code> e concentra os recursos destinados ao gerenciamento do sistema.
+</p>
+
+<pre><code>admin/
+├── api/
+│   ├── agenda/
+│   ├── agendamentos/
+│   └── relatorios/
+│
+└── painelAdmin.php</code></pre>
+
+<p align="justify">
+  As APIs são organizadas por funcionalidade, permitindo a separação dos recursos relacionados à agenda, aos agendamentos e aos relatórios.
+</p>
+
+<br>
+
+## Área do Cliente
+
+<p align="justify">
+  As funcionalidades destinadas aos clientes estão organizadas no diretório <code>usuario/</code>.
+</p>
+
+<pre><code>usuario/
+├── api/
+├── auth/
+└── painelClient.php</code></pre>
+
+<p align="justify">
+  Essa estrutura concentra os recursos relacionados à autenticação, às APIs utilizadas pela área do usuário e ao painel do cliente.
+</p>
 
 <br>
 
 ## Segurança
 
 <p align="justify">
-  O sistema utiliza o algoritmo de hash <strong>BCRYPT</strong> para proteção das senhas dos usuários, evitando o armazenamento de credenciais em texto puro no banco de dados.
+  O sistema utiliza conexão PDO com o banco de dados e possui mecanismos de autenticação para controle de acesso às áreas administrativas e de clientes.
+</p>
+
+<p align="justify">
+  As credenciais do banco de dados e informações sensíveis de acesso não devem ser armazenadas diretamente no código versionado. Para ambientes de produção, recomenda-se utilizar variáveis de ambiente e arquivos de configuração protegidos.
 </p>
 
 <br>
 
-## Objetivos do Projeto
+## E-mail Administrativo
 
-- Desenvolver uma presença digital profissional para a empresa.
-- Apresentar os serviços oferecidos pelo salão.
-- Facilitar o acesso às informações da empresa.
-- Implementar um sistema de autenticação de usuários.
-- Aplicar conceitos de desenvolvimento Front-end e Back-end.
-- Trabalhar com banco de dados relacional.
-- Aplicar conceitos de UI/UX e prototipação.
-- Organizar e documentar o desenvolvimento do sistema.
+<p align="justify">
+  O sistema possui um endereço de e-mail administrativo utilizado para operações relacionadas à administração da aplicação.
+</p>
+
+<p align="center">
+  <strong>golcalvesmarcella@gmail.com</strong>
+</p>
+
+<br>
+
+## Docker
+
+<p align="justify">
+  O projeto possui um <code>Dockerfile</code>, permitindo a configuração de um ambiente de execução baseado em containers.
+</p>
+
+<p align="justify">
+  A utilização do Docker facilita a padronização do ambiente e a replicação da aplicação em diferentes sistemas.
+</p>
+
+<br>
+
+## Licença
+
+<p align="justify">
+  Este projeto possui um arquivo <code>LICENSE</code> na raiz do repositório, contendo as condições de utilização e distribuição do projeto.
+</p>
 
 <br>
 
@@ -210,7 +264,7 @@ Com os módulos <strong>Apache</strong> e <strong>MySQL</strong> ativos, acesse:
 | **Curso** | Desenvolvimento de Software Multiplataforma |
 | **Instituição** | FATEC Itaquera |
 | **Tipo de Projeto** | Projeto Interdisciplinar |
-| **2° Semestre** | 2026 |
+| **Semestre** | 2° Semestre |
 
 </div>
 
